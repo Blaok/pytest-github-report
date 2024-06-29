@@ -108,7 +108,7 @@ def extract_pytest_stats(
                     "out": "",
                 }
             results_per_testfunc[key]["count"][stat_key] += 1
-            results_per_testfunc[key]["duration"] += value.duration
+            results_per_testfunc[key]["duration"] += getattr(value, 'duration', 0)
             if value.longrepr:
                 results_per_testfunc[key]["out"] += str(value.longrepr)
     return results_per_testfunc
